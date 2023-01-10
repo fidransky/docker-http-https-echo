@@ -31,5 +31,7 @@ WORKDIR /app
 COPY --from=build /app /app
 ENV HTTP_PORT=8080 HTTPS_PORT=8443
 EXPOSE $HTTP_PORT $HTTPS_PORT
+RUN chgrp -R 0 /app && \
+    chmod -R g=u /app
 USER 1000
 CMD ["node", "./index.js"]
