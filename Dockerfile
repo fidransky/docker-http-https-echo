@@ -11,8 +11,7 @@ RUN set -ex \
        -addext "subjectAltName=DNS:my.example.com,DNS:my.example.net,IP:192.168.50.108,IP:127.0.0.1" \
   && apk del openssl \
   && rm -rf /var/cache/apk/* \
-  && rm package* \
-  && chown -R node /app \
+  && rm package* && chown -R node /app \
   && chmod +r /app/privkey.pem
 
 FROM node:16-alpine AS final
